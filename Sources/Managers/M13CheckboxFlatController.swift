@@ -137,8 +137,8 @@ internal class M13CheckboxFlatController: M13CheckboxController {
             quickOpacityAnimation.beginTime = CACurrentMediaTime() + morphAnimation.duration
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ () -> Void in
-                self.resetLayersForState(toState)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(toState)
                 completion?()
             })
             
@@ -162,8 +162,8 @@ internal class M13CheckboxFlatController: M13CheckboxController {
             morphAnimation.duration = morphAnimation.duration - quickOpacityAnimation.duration
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ () -> Void in
-                self.resetLayersForState(toState)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(toState)
                 completion?()
             })
             
@@ -181,8 +181,8 @@ internal class M13CheckboxFlatController: M13CheckboxController {
             let morphAnimation = animationGenerator.morphAnimation(fromPath, toPath: toPath)
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ [unowned self] () -> Void in
-                self.resetLayersForState(self.state)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(self?.state)
                 completion?()
                 })
             

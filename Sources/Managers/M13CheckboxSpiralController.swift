@@ -128,8 +128,8 @@ internal class M13CheckboxSpiralController: M13CheckboxController {
             checkQuickOpacityAnimation.beginTime = CACurrentMediaTime() + checkMorphAnimation.duration + checkStrokeAnimation.duration
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ () -> Void in
-                self.resetLayersForState(toState)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(toState)
                 completion?()
             })
             
@@ -170,8 +170,8 @@ internal class M13CheckboxSpiralController: M13CheckboxController {
             checkMorphAnimation.beginTime = CACurrentMediaTime() + boxStrokeAnimation.duration + checkStrokeAnimation.duration
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ () -> Void in
-                self.resetLayersForState(toState)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(toState)
                 completion?()
             })
             
@@ -193,8 +193,8 @@ internal class M13CheckboxSpiralController: M13CheckboxController {
             let morphAnimation = animationGenerator.morphAnimation(fromPath, toPath: toPath)
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ [unowned self] () -> Void in
-                self.resetLayersForState(self.state)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(self?.state)
                 completion?()
                 })
             

@@ -110,8 +110,8 @@ internal class M13CheckboxFillController: M13CheckboxController {
             let opacityAnimation = animationGenerator.opacityAnimation(true)
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ () -> Void in
-                self.resetLayersForState(toState)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(toState)
                 completion?()
             })
             
@@ -126,8 +126,8 @@ internal class M13CheckboxFillController: M13CheckboxController {
             let opacityAnimation = animationGenerator.opacityAnimation(false)
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ () -> Void in
-                self.resetLayersForState(toState)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(toState)
                 completion?()
             })
             
@@ -142,8 +142,8 @@ internal class M13CheckboxFillController: M13CheckboxController {
             let morphAnimation = animationGenerator.morphAnimation(fromPath, toPath: toPath)
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ [unowned self] () -> Void in
-                self.resetLayersForState(self.state)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(self?.state)
                 completion?()
                 })
             

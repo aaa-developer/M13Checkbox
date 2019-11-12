@@ -131,8 +131,8 @@ internal class M13CheckboxExpandController: M13CheckboxController {
             let wiggleAnimation = animationGenerator.fillAnimation(1, amplitude: amplitude, reverse: true)
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ () -> Void in
-                self.resetLayersForState(self.state)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(self?.state)
                 completion?()
             })
             
@@ -147,8 +147,8 @@ internal class M13CheckboxExpandController: M13CheckboxController {
             let wiggleAnimation = animationGenerator.fillAnimation(1, amplitude: amplitude, reverse: false)
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ () -> Void in
-                self.resetLayersForState(self.state)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(self?.state)
                 completion?()
             })
             
@@ -163,8 +163,8 @@ internal class M13CheckboxExpandController: M13CheckboxController {
             let morphAnimation = animationGenerator.morphAnimation(fromPath, toPath: toPath)
             
             CATransaction.begin()
-            CATransaction.setCompletionBlock({ [unowned self] () -> Void in
-                self.resetLayersForState(self.state)
+            CATransaction.setCompletionBlock({ [weak self] in
+                self?.resetLayersForState(self?.state)
                 completion?()
                 })
             
